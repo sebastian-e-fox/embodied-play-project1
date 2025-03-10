@@ -540,7 +540,6 @@ GameObject:
   m_Component:
   - component: {fileID: 497618824}
   - component: {fileID: 497618823}
-  - component: {fileID: 497618822}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -548,14 +547,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &497618822
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497618821}
-  m_Enabled: 1
 --- !u!20 &497618823
 Camera:
   m_ObjectHideFlags: 0
@@ -1104,6 +1095,7 @@ MonoBehaviour:
   dotThreshold: 0.99
   maxDistance: 5
   IsLookingAtObject: 0
+  panel: {fileID: 1176386370}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1116,6 +1108,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1212,6 +1205,22 @@ MonoBehaviour:
   sensX: 400
   sensY: 400
   orientation: {fileID: 565559849}
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b155df08febaa234eba7cb6db600fd1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomInFOV: 50
+  zoomOutFOV: 100
+  zoomInSpeed: 10
+  zoomOutSpeed: 20
 --- !u!1 &999198977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,13 +1300,15 @@ GameObject:
   - component: {fileID: 1176386366}
   - component: {fileID: 1176386368}
   - component: {fileID: 1176386367}
+  - component: {fileID: 1176386369}
+  - component: {fileID: 1176386370}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1176386366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1355,6 +1366,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1176386365}
   m_CullTransparentMesh: 1
+--- !u!225 &1176386369
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176386365}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1176386370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176386365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154a2bccd50bc154784a43f0ba43ada5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1176386369}
+  fadeInSpeed: 1
+  fadeOutSpeed: 3
 --- !u!1 &2083014213
 GameObject:
   m_ObjectHideFlags: 0

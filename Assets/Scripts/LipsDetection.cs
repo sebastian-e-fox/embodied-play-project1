@@ -10,9 +10,23 @@ public class LipsDetection : MonoBehaviour
 
     public bool IsLookingAtObject;
 
-    void Update()
+    public ShowPanel panel;
+
+    void FixedUpdate()
     {
-        Vector3 directionToTarget = (transform.position - playerCamera.position);
+        if (IsLookingAtObject)
+        {
+            FindObjectOfType<ShowPanel>().SetFadeState(true);  // To fade in
+            FindObjectOfType<CameraZoom>().SetZoomState(true);  // Zoom in
+
+        }
+        else
+        {
+            FindObjectOfType<ShowPanel>().SetFadeState(false); // To fade out
+            FindObjectOfType<CameraZoom>().SetZoomState(false); // Zoom out
+        }
+
+            Vector3 directionToTarget = (transform.position - playerCamera.position);
         float distanceToTarget = directionToTarget.magnitude;
 
         if (distanceToTarget <= maxDistance) // Check if within distance
@@ -27,9 +41,4 @@ public class LipsDetection : MonoBehaviour
             IsLookingAtObject = false;
         }
     }
-
-    // slowly slide opacity up until 150 when looking at target
-
-    // slowly slide opacity down to 0 / hide gameobject when not
-
 }
