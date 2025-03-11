@@ -672,7 +672,7 @@ Transform:
   m_GameObject: {fileID: 682025425}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -0.000000029802, y: -0.00000011921, z: 0.503}
+  m_LocalPosition: {x: -0.000000029802, y: -0.00000011921, z: 0.508}
   m_LocalScale: {x: 0.094736, y: 1, z: 0.095566}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1217,8 +1217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b155df08febaa234eba7cb6db600fd1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoomInFOV: 50
-  zoomOutFOV: 100
+  zoomInFOV: 20
+  zoomOutFOV: 60
   zoomInSpeed: 10
   zoomOutSpeed: 20
 --- !u!1 &999198977

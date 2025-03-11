@@ -21,7 +21,7 @@ public class CameraZoom : MonoBehaviour
         if (zoomIn != shouldZoomIn) // Only start zoom if state changes
         {
             shouldZoomIn = zoomIn;
-            if (!isZooming) StartCoroutine(Zoom());
+            if (!isZooming) StartCoroutine(Zoom()); 
         }
     }
 
