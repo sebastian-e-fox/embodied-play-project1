@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|c:\\users\\35ozf\\documents\\y3s2\\embodied play\\unity projects\\testproject\\assets\\scripts\\camerazoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camerazoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\assets\\scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|c:\\users\\35ozf\\documents\\y3s2\\embodied play\\unity projects\\testproject\\assets\\scripts\\lipsdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\assets\\scripts\\lipsdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lipsdetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,12 +19,8 @@
       "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\showpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\assets\\scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\cameramovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|c:\\users\\35ozf\\documents\\y3s2\\embodied play\\unity projects\\testproject\\assets\\scripts\\camerazoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4CE07701-134F-9DD0-F36C-F385BB4D61DF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camerazoom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,37 +30,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "CameraZoom.cs",
               "DocumentMoniker": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\CameraZoom.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CameraZoom.cs",
               "ToolTip": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\CameraZoom.cs",
               "RelativeToolTip": "Assets\\Scripts\\CameraZoom.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABcAAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T12:01:58.414Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ShowPanel.cs",
               "DocumentMoniker": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\ShowPanel.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\ShowPanel.cs",
               "ToolTip": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\ShowPanel.cs",
               "RelativeToolTip": "Assets\\Scripts\\ShowPanel.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-10T11:51:17.583Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "LipsDetection.cs",
               "DocumentMoniker": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\LipsDetection.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\LipsDetection.cs",
@@ -73,7 +73,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerMovement.cs",
@@ -81,19 +81,21 @@
               "RelativeToolTip": "Assets\\Scripts\\PlayerMovement.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-09T20:35:05.134Z"
+              "WhenOpened": "2025-03-09T20:35:05.134Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "CameraMovement.cs",
               "DocumentMoniker": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\CameraMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\CameraMovement.cs",
               "ToolTip": "C:\\Users\\35ozf\\Documents\\Y3S2\\Embodied Play\\Unity Projects\\TestProject\\Assets\\Scripts\\CameraMovement.cs",
               "RelativeToolTip": "Assets\\Scripts\\CameraMovement.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAcwBcAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-05T18:21:03.245Z"
+              "WhenOpened": "2025-03-05T18:21:03.245Z",
+              "EditorCaption": ""
             }
           ]
         }
