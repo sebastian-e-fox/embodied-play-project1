@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 using Tobii.Gaming;
 
 namespace Tobii.Gaming.SimpleGazeSelection
@@ -8,25 +8,28 @@ namespace Tobii.Gaming.SimpleGazeSelection
     {
         public Transform playerCamera;
         public float maxDistance = 20f;
-        public float gazeTimeRequired = 2f; // Time required to turn fully red and start chasing
+        public float gazeTimeRequired = 2f; // Time required to fill the bar and trigger chase
         public float chaseSpeed = 5f; // Speed at which the object chases the player
 
-        private bool isLookingAtObject;
-        private Renderer _renderer;
         private GazeAware _gazeAwareComponent;
-        private float gazeTime = 0f; // Timer for how long the player has looked at the object
-        public bool isChasing = false;
+        private float gazeTime = 0f;
         private float distanceToTarget;
+        public bool isChasing = false;
+
+        public GameObject ExclamationCanvas; // The entire exclamation UI
+        public RectTransform fillRectTransform; // The red fill bar RectTransform
+
+        private float endY = 0;
+        private float startY = -0.8f;
 
         private void Start()
         {
             _gazeAwareComponent = GetComponent<GazeAware>();
-            _renderer = GetComponent<Renderer>();
 
-            // Debugging Checks
+            //CONSOLE MESSAGES FOR MEASURE
             if (_gazeAwareComponent == null)
             {
-                Debug.LogError("GazeAware component is missing from this object!", this);
+                Debug.LogError("GazeAware component is missing!", this);
             }
 
             if (TobiiAPI.IsConnected == false)
@@ -34,54 +37,67 @@ namespace Tobii.Gaming.SimpleGazeSelection
                 Debug.LogError("Tobii Eye Tracker is not connected!");
             }
 
-            if (_renderer == null)
+            if (ExclamationCanvas == null || fillRectTransform == null)
             {
-                Debug.LogError("Renderer component is missing!", this);
+                Debug.LogError("Assign all UI elements (ExclamationCanvas, backgroundImage, fillRectTransform)!", this);
             }
+
+            ExclamationCanvas.SetActive(false);
+            ResetFill();
         }
 
         void Update()
         {
+            distanceToTarget = Vector3.Distance(transform.position, playerCamera.position);
 
-            Vector3 directionToTarget = (transform.position - playerCamera.position);
-           distanceToTarget = directionToTarget.magnitude;
-
-            if (isChasing) // If already chasing, follow the player
+            if (isChasing)
             {
                 ChasePlayer();
                 return;
             }
 
-            if (distanceToTarget <= maxDistance) // Check if within detection range
+            if (distanceToTarget <= maxDistance)
             {
-                if (_gazeAwareComponent.HasGazeFocus) // Gaze Detection
+                if (_gazeAwareComponent.HasGazeFocus)
                 {
-                    isLookingAtObject = true;
-                    gazeTime += Time.deltaTime; // Increment the gaze timer
+                    ExclamationCanvas.SetActive(true);
 
-                    // Calculate color intensity based on how long the player is looking
+                    gazeTime += Time.deltaTime;
                     float t = Mathf.Clamp01(gazeTime / gazeTimeRequired);
-                    _renderer.material.color = Color.Lerp(Color.white, Color.red, t);
 
-                    // If player has looked long enough, trigger chase mode
+                    // Move the red fill rectangle gradually from startY to endY
+                    Vector2 anchoredPos = fillRectTransform.anchoredPosition;
+                    anchoredPos.y = Mathf.Lerp(startY, endY, t);
+                    fillRectTransform.anchoredPosition = anchoredPos;
+
                     if (gazeTime >= gazeTimeRequired)
                     {
                         isChasing = true;
                     }
                 }
-                else // Player looked away before timer finished
+                else
                 {
-                    isLookingAtObject = false;
-                    gazeTime = 0f; // Reset gaze timer
-                    _renderer.material.color = Color.white; // Reset color
+                    ResetDetection();
                 }
             }
-            else // Out of range
+            else
             {
-                isLookingAtObject = false;
-                gazeTime = 0f; // Reset gaze timer
-                _renderer.material.color = Color.white; // Reset color
+                ResetDetection();
             }
+        }
+
+        private void ResetDetection()
+        {
+            gazeTime = 0f;
+            ResetFill();
+            ExclamationCanvas.SetActive(false);
+        }
+
+        private void ResetFill()
+        {
+            Vector2 anchoredPos = fillRectTransform.anchoredPosition;
+            anchoredPos.y = startY;
+            fillRectTransform.anchoredPosition = anchoredPos;
         }
 
         private void ChasePlayer()
@@ -89,17 +105,22 @@ namespace Tobii.Gaming.SimpleGazeSelection
             if (distanceToTarget < 30f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, playerCamera.position, chaseSpeed * Time.deltaTime);
-                _renderer.material.color = Color.red; // Fully red while chasing
+
+                // Fully fill the exclamation
+                Vector2 anchoredPos = fillRectTransform.anchoredPosition;
+                anchoredPos.y = endY;
+                fillRectTransform.anchoredPosition = anchoredPos;
             }
             else
             {
-                // Gradually fade back to white over time
-                _renderer.material.color = Color.Lerp(_renderer.material.color, Color.white, Time.deltaTime * 0.75f);
+                Vector2 anchoredPos = fillRectTransform.anchoredPosition;
+                anchoredPos.y = Mathf.Lerp(anchoredPos.y, startY, Time.deltaTime * 0.75f);
+                fillRectTransform.anchoredPosition = anchoredPos;
 
-                // If the color is close to white, stop chasing
-                if (_renderer.material.color.r > 0.95f && _renderer.material.color.g > 0.95f && _renderer.material.color.b > 0.95f)
+                if (Mathf.Abs(anchoredPos.y - startY) < 0.01f)
                 {
                     isChasing = false;
+                    ExclamationCanvas.SetActive(false);
                 }
             }
         }
