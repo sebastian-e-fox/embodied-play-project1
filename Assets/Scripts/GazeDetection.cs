@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Tobii.Gaming;
+using System.Runtime.CompilerServices;
 
 namespace Tobii.Gaming.SimpleGazeSelection
 {
@@ -11,6 +12,7 @@ namespace Tobii.Gaming.SimpleGazeSelection
         public float gazeTimeRequired = 2f; // Time required to fill the bar and trigger chase
         public float chaseSpeed = 5f; // Speed at which the object chases the player
 
+        private BoxCollider _boxCollider;
         private GazeAware _gazeAwareComponent;
         private float gazeTime = 0f;
         private float distanceToTarget;
@@ -25,6 +27,9 @@ namespace Tobii.Gaming.SimpleGazeSelection
         private void Start()
         {
             _gazeAwareComponent = GetComponent<GazeAware>();
+
+            _boxCollider = GetComponent<BoxCollider>();
+            _boxCollider.enabled = false; //disables NPC's collisions detection
 
             //CONSOLE MESSAGES FOR MEASURE
             if (_gazeAwareComponent == null)
@@ -110,6 +115,8 @@ namespace Tobii.Gaming.SimpleGazeSelection
                 Vector2 anchoredPos = fillRectTransform.anchoredPosition;
                 anchoredPos.y = endY;
                 fillRectTransform.anchoredPosition = anchoredPos;
+
+                _boxCollider.enabled = true; //enables the enemy "catching you"
             }
             else
             {
@@ -121,6 +128,7 @@ namespace Tobii.Gaming.SimpleGazeSelection
                 {
                     isChasing = false;
                     ExclamationCanvas.SetActive(false);
+                    _boxCollider.enabled = false; //disables the enemy "catching you"
                 }
             }
         }
