@@ -1,27 +1,27 @@
 using UnityEngine;
-using UnityEngine.UI; // For UI elements
-using UnityEngine.SceneManagement; // If you want to restart the game
 
-public class PlayerDetection : MonoBehaviour
+public class PlayerTrigger : MonoBehaviour
 {
     public GameObject gameOverPanel; // Assign this in the Inspector
 
     private void Start()
     {
-        // Make sure the panel is hidden at the start
         if (gameOverPanel != null)
-            gameOverPanel.SetActive(false);
+            gameOverPanel.SetActive(false); // Hide the panel at start
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Make sure your player has the "Player" tag
+        if (other.CompareTag("Player")) // Ensure your player is tagged correctly
         {
             Debug.Log("Player detected! Game Over.");
 
             // Show the panel
             if (gameOverPanel != null)
                 gameOverPanel.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
             // Stop the game
             Time.timeScale = 0f;
