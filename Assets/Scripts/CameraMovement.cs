@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-
     public float sensX;
     public float sensY;
 
