@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class DialogueManager : MonoBehaviour
         if (isTalking && Input.GetKeyDown(KeyCode.F))
         {
             ShowNextLine();
+
         }
     }
 

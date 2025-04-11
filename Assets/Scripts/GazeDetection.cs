@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Tobii.Gaming;
 using System.Runtime.CompilerServices;
+using UnityEngine.AI;
 
 namespace Tobii.Gaming.SimpleGazeSelection
 {
@@ -24,8 +25,11 @@ namespace Tobii.Gaming.SimpleGazeSelection
         private float endY = 0;
         private float startY = -0.8f;
 
+        public NavMeshAgent _agent;
+
         private void Start()
         {
+            _agent = GetComponent<NavMeshAgent>();
             _gazeAwareComponent = GetComponent<GazeAware>();
 
             _boxCollider = GetComponent<BoxCollider>();
@@ -109,7 +113,9 @@ namespace Tobii.Gaming.SimpleGazeSelection
         {
             if (distanceToTarget < 30f)
             {
-                transform.position = Vector3.MoveTowards(transform.position, playerCamera.position, chaseSpeed * Time.deltaTime);
+                //transform.position = Vector3.MoveTowards(transform.position, playerCamera.position, chaseSpeed * Time.deltaTime);
+
+                _agent.SetDestination(playerCamera.position);
 
                 // Fully fill the exclamation
                 Vector2 anchoredPos = fillRectTransform.anchoredPosition;

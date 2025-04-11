@@ -7,6 +7,13 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] private MoveSettings _settings = null;
     [SerializeField] private HeadBobController _headBobController;
+    
+    [Header("Footsteps")]
+    public AudioClip [] footstepsSound;
+    public AudioSource sprintSound;
+    public AudioSource footstepsSource;
+    public string currentSurfaceTag = "Concrete";
+    public string lastSurfaceTag = "Concrete";
 
     private Vector3 _moveDirection;
     private CharacterController _controller;
@@ -39,10 +46,20 @@ public class PlayerMove : MonoBehaviour
         HandleSprint();
         DefaultMovement();
         UpdateStaminaUI();
+        UpdateFootstepSound();
 
         if (_headBobController != null)
         {
             _headBobController.IsSprinting = isSprinting;
+        }
+
+        if (isSprinting && currentStamina <= 60)
+        {
+            sprintSound.enabled = true;
+        }
+        else
+        {
+            sprintSound.enabled = false;
         }
     }
 
@@ -88,11 +105,45 @@ public class PlayerMove : MonoBehaviour
             _moveDirection.y = -_settings.antiBump;
 
             _moveDirection = transform.TransformDirection(_moveDirection);
+            
+            // FOOTSTEPS
+            if (input.x != 0 || input.y != 0)
+            {
+                Debug.Log("Movement!");
+                footstepsSource.enabled = true;
 
-            //if (Input.GetKey(KeyCode.Space))
-            //{
-            //    Jump();
-            //}
+                if (currentSurfaceTag != lastSurfaceTag)
+                {
+                    // Update clip based on new surface
+                    if (currentSurfaceTag == "Snow")
+                    {
+                        footstepsSource.clip = footstepsSound[0];
+                    }
+                    else if (currentSurfaceTag == "Concrete")
+                    {
+                        footstepsSource.clip = footstepsSound[1];
+                    }
+
+                    footstepsSource.Stop(); // Force restart
+                    footstepsSource.Play();
+
+                    lastSurfaceTag = currentSurfaceTag;
+                }
+
+                if (isSprinting)
+                {
+                    footstepsSource.pitch = 1.9f;
+                }
+                else
+                {
+                    footstepsSource.pitch = 0.7f;
+                }
+            }
+            else
+            {
+                footstepsSource.enabled = false;
+
+            }
         }
         else
         {
@@ -110,6 +161,22 @@ public class PlayerMove : MonoBehaviour
     //{
     //    _moveDirection.y += _settings.jumpForce;
     //}
+
+    private void UpdateFootstepSound()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2f))
+        {
+            if (hit.collider.CompareTag("Snow"))
+            {
+                currentSurfaceTag = "Snow";
+            }
+            else if (hit.collider.CompareTag("Concrete"))
+            {
+                currentSurfaceTag = "Concrete";
+            }
+        }
+    }
 
     private void UpdateStaminaUI()
     {
